@@ -1,0 +1,116 @@
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="runningSvg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="stick_man.svg">
+   <style>
+      #body {
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-duration: 0.2s;
+            animation-name: bodyBounce;
+      }
+      .runningArm {
+            transform-origin: 62% 47%;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-duration: 0.4s;
+      }
+      .runningLeg {
+            transform-origin: 49% 67%;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-duration: 0.4s;
+      }
+      #leftArm {
+            animation-name: leftArmMoves;
+      }
+      #rightArm {
+            animation-name: rightArmMoves;
+      }
+      #leftLeg {
+            animation-name: leftLegMoves;
+      }
+      #rightLeg {
+            animation-name: rightLegMoves;
+      }
+      @keyframes bodyBounce {
+            0% { transform: translate(0, -4%); }
+            100% { transform: translate(0, 0%); }
+      }
+      @keyframes leftLegMoves {
+            0% { transform: rotate(-50deg); }
+            100%  { transform: rotate(80deg); }
+      }
+      @keyframes rightLegMoves {
+            0%  { transform: rotate(80deg); }
+            100% { transform: rotate(-50deg); }
+      }
+      @keyframes leftArmMoves {
+            0% { transform: rotate(-70deg); }
+            100% { transform: rotate(70deg); }
+      }
+      @keyframes rightArmMoves {
+            0% { transform: rotate(70deg); }
+            100% { transform: rotate(-70deg); }
+      }
+   </style>
+   <g id="body">
+      <circle
+      id="head"
+      r="30"
+      cy="99.296188"
+      cx="149.82397"
+      style="fill:none;stroke:#000000;stroke-width:4.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+      id="torso"
+      inkscape:connector-curvature="0"
+      d="M 135.68728,125.6846 102.25,200.99406"
+      style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+      id="leftArm"
+      class="runningArm"
+      sodipodi:nodetypes="ccc"
+      inkscape:connector-curvature="0"
+      d="m 141.1007,199.20031 -21.86594,-30.47472 11.48579,-31.50294"
+      dd="M 138.00495,199.20031 116.13901,168.72559 127.6248,137.22265"
+      style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+      id="rightArm"
+      class="runningArm"
+      sodipodi:nodetypes="ccc"
+      inkscape:connector-curvature="0"
+      d="m 141.1007,199.20031 -21.86594,-30.47472 11.48579,-31.50294"
+      dd="M 138.00495,199.20031 116.13901,168.72559 127.6248,137.22265"
+      style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+      id="leftLeg"
+      class="runningLeg"
+      sodipodi:nodetypes="ccc"
+      inkscape:connector-curvature="0"
+      dd="M 78.437503,277.91222 108.44766,236.49139 102.25,200.99406"
+      d="m 126.0625,275.79554 4.20034,-47.8353 L 102.25,198.87738"
+      style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+      id="rightLeg"
+      class="runningLeg bodyPart"
+      sodipodi:nodetypes="ccc"
+      inkscape:connector-curvature="0"
+      dd="m 126.0625,277.91222 4.20034,-47.8353 L 102.25,200.99406"
+      d="m 126.0625,275.79554 4.20034,-47.8353 L 102.25,198.87738"
+      style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+   </g>
+</svg>
