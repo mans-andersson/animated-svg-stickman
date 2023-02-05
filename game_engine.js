@@ -1,5 +1,5 @@
 let xPos = 100;
-let maxSpeed = 7;
+let maxSpeed = 8;
 let xSpeed = 0;
 let rightPressed = false;
 let leftPressed = false;
@@ -7,8 +7,12 @@ let leftPressed = false;
 const main = () => {
     const assetsDiv = document.createElement('div');
     assetsDiv.id = 'svgAssets';
-    assetsDiv.style = 'display:none;widht:0px;height:0px;positionn:absolute;';
+    assetsDiv.style = 'display:none;widht:0px;height:0px;position:absolute;';
+    const stickManImage = document.createElement('img');
+    stickManImage.id = 'stickFigureImg';
+    stickManImage.style.position = 'absolute';
     document.body.appendChild(assetsDiv);
+    document.body.appendChild(stickManImage);
     fetch('stick_man.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
