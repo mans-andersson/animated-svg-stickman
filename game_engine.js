@@ -1,17 +1,24 @@
 let xPos = 100;
-let maxSpeed = 5;
+let maxSpeed = 7;
 let xSpeed = 0;
 let rightPressed = false;
 let leftPressed = false;
-let stickFigureSvg;
 
 const main = () => {
     const assetsDiv = document.createElement('div');
     assetsDiv.id = 'svgAssets';
     assetsDiv.style = 'display:none;widht:0px;height:0px;positionn:absolute;';
     document.body.appendChild(assetsDiv);
-    fetch('wip.svg').then(r => r.text()).then(text => {
-        stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
+    fetch('stick_man.svg').then(r => r.text()).then(text => {
+        const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
+        document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
+    });
+    fetch('stick_man_running_right.svg').then(r => r.text()).then(text => {
+        const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
+        document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
+    });
+    fetch('stick_man_running_left.svg').then(r => r.text()).then(text => {
+        const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
     setInterval('render()', 10);
@@ -43,20 +50,25 @@ const slowDownX = () => {
  }
 const render = () => {
  console.log('render');
- const runnningStickFigureSvg = document.getElementById('runningSvg');
- console.log(runnningStickFigureSvg);
+ const runnningStickFigureRightSvg = document.getElementById('runningSvgRight');
+ const runningStickFigureLeftSvg = document.getElementById('runningSvgLeft');
+ const stillStickFigureSvg = document.getElementById('stillSvg');
  const stickFigure = document.getElementById("stickFigure");
- const xml = (new XMLSerializer).serializeToString(runnningStickFigureSvg);
- stickFigure.src = "data:image/svg+xml;base64," + btoa(xml);
  xPos = xPos + xSpeed;
  if (rightPressed) {
-     xSpeed = Math.min(xSpeed + 1,1*maxSpeed);
+    xSpeed = Math.min(xSpeed + 1,1 * maxSpeed);
+    const xml = (new XMLSerializer).serializeToString(runnningStickFigureRightSvg);
+    stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
  }
  if (leftPressed) {
-     xSpeed = Math.max(xSpeed - 1,-1*maxSpeed);
+    xSpeed = Math.max(xSpeed - 1,-1 * maxSpeed);
+    const xml = (new XMLSerializer).serializeToString(runningStickFigureLeftSvg);
+    stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
  }
  if (!leftPressed && !rightPressed) {
-     slowDownX();
+    slowDownX();
+    const xml = (new XMLSerializer).serializeToString(stillStickFigureSvg);
+    stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
  }
  stickFigure.style.left = xPos;
 };
