@@ -46,18 +46,28 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
+const resizeStickFigure = (stickFigureImg)  => {
+    const height = window.innerHeight;
+    const width = window.innerWidth;
+    console.log(height);
+    stickFigureImg.width = height * 0.2;
+    stickFigureImg.height = height * 0.2;
+    stickFigureImg.style.top = height - stickFigureImg.height;
+    return stickFigureImg;
+}
+
 const slowDownX = () => {
-     if (xSpeed > 0)
-         xSpeed = xSpeed - 1;
-     if (xSpeed < 0)
-         xSpeed = xSpeed + 1;
+    if (xSpeed > 0)
+        xSpeed = xSpeed - 1;
+    if (xSpeed < 0)
+        xSpeed = xSpeed + 1;
  }
 const render = () => {
  console.log('render');
  const runnningStickFigureRightSvg = document.getElementById('runningSvgRight');
  const runningStickFigureLeftSvg = document.getElementById('runningSvgLeft');
  const stillStickFigureSvg = document.getElementById('stillSvg');
- const stickFigure = document.getElementById("stickFigure");
+ let stickFigure = document.getElementById("stickFigureImg");
  xPos = xPos + xSpeed;
  if (rightPressed) {
     xSpeed = Math.min(xSpeed + 1,1 * maxSpeed);
@@ -74,6 +84,7 @@ const render = () => {
     const xml = (new XMLSerializer).serializeToString(stillStickFigureSvg);
     stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
  }
+ stickFigure = resizeStickFigure(stickFigure);
  stickFigure.style.left = xPos;
 };
 
