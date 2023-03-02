@@ -13,15 +13,15 @@ const main = () => {
     stickManImage.style.position = 'absolute';
     document.body.appendChild(assetsDiv);
     document.body.appendChild(stickManImage);
-    fetch('stick_man.svg').then(r => r.text()).then(text => {
+    fetch('animated-svg-stickman/stick_man.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('stick_man_running_right.svg').then(r => r.text()).then(text => {
+    fetch('animated-svg-stickman/stick_man_running_right.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('stick_man_running_left.svg').then(r => r.text()).then(text => {
+    fetch('animated-svg-stickman/stick_man_running_left.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
@@ -48,11 +48,9 @@ document.addEventListener('keyup', (event) => {
 
 const resizeStickFigure = (stickFigureImg)  => {
     const height = window.innerHeight;
-    const width = window.innerWidth;
-    console.log(height);
     stickFigureImg.width = height * 0.2;
     stickFigureImg.height = height * 0.2;
-    stickFigureImg.style.top = height - stickFigureImg.height;
+    stickFigureImg.style.top = height - stickFigureImg.height + "px";
     return stickFigureImg;
 }
 
@@ -63,7 +61,6 @@ const slowDownX = () => {
         xSpeed = xSpeed + 1;
  }
 const render = () => {
- console.log('render');
  const runnningStickFigureRightSvg = document.getElementById('runningSvgRight');
  const runningStickFigureLeftSvg = document.getElementById('runningSvgLeft');
  const stillStickFigureSvg = document.getElementById('stillSvg');
@@ -85,7 +82,7 @@ const render = () => {
     stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
  }
  stickFigure = resizeStickFigure(stickFigure);
- stickFigure.style.left = xPos;
+ stickFigure.style.left = xPos + "px";
 };
 
 main();
