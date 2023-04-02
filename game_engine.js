@@ -13,15 +13,15 @@ const main = () => {
     stickManImage.style.position = 'absolute';
     document.body.appendChild(assetsDiv);
     document.body.appendChild(stickManImage);
-    fetch('animated-svg-stickman/stick_man.svg').then(r => r.text()).then(text => {
+    fetch('./stick_man.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('animated-svg-stickman/stick_man_running_right.svg').then(r => r.text()).then(text => {
+    fetch('./stick_man_running_right.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('animated-svg-stickman/stick_man_running_left.svg').then(r => r.text()).then(text => {
+    fetch('./stick_man_running_left.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
@@ -29,24 +29,24 @@ const main = () => {
 }
 
 document.addEventListener('keydown', (event) => {
-     if (event.key == 'a') {
-         console.log('pressed a');
-         leftPressed = true;
-     } else if (event.key == 'd') {
-         console.log('pressed d');
-         rightPressed = true;
-     }
+    if (event.key == 'a') {
+        console.log('pressed a');
+        leftPressed = true;
+    } else if (event.key == 'd') {
+        console.log('pressed d');
+        rightPressed = true;
+    }
 });
 
 document.addEventListener('keyup', (event) => {
     if (event.key == 'a') {
-         leftPressed = false;
+        leftPressed = false;
     } else if (event.key == 'd') {
-         rightPressed = false;
+        rightPressed = false;
     }
 });
 
-const resizeStickFigure = (stickFigureImg)  => {
+const resizeStickFigure = (stickFigureImg) => {
     const height = window.innerHeight;
     stickFigureImg.width = height * 0.2;
     stickFigureImg.height = height * 0.2;
@@ -59,30 +59,30 @@ const slowDownX = () => {
         xSpeed = xSpeed - 1;
     if (xSpeed < 0)
         xSpeed = xSpeed + 1;
- }
+}
 const render = () => {
- const runnningStickFigureRightSvg = document.getElementById('runningSvgRight');
- const runningStickFigureLeftSvg = document.getElementById('runningSvgLeft');
- const stillStickFigureSvg = document.getElementById('stillSvg');
- let stickFigure = document.getElementById("stickFigureImg");
- xPos = xPos + xSpeed;
- if (rightPressed) {
-    xSpeed = Math.min(xSpeed + 1,1 * maxSpeed);
-    const xml = (new XMLSerializer).serializeToString(runnningStickFigureRightSvg);
-    stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
- }
- if (leftPressed) {
-    xSpeed = Math.max(xSpeed - 1,-1 * maxSpeed);
-    const xml = (new XMLSerializer).serializeToString(runningStickFigureLeftSvg);
-    stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
- }
- if (!leftPressed && !rightPressed) {
-    slowDownX();
-    const xml = (new XMLSerializer).serializeToString(stillStickFigureSvg);
-    stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
- }
- stickFigure = resizeStickFigure(stickFigure);
- stickFigure.style.left = xPos + "px";
+    const runnningStickFigureRightSvg = document.getElementById('runningSvgRight');
+    const runningStickFigureLeftSvg = document.getElementById('runningSvgLeft');
+    const stillStickFigureSvg = document.getElementById('stillSvg');
+    let stickFigure = document.getElementById("stickFigureImg");
+    xPos = xPos + xSpeed;
+    if (rightPressed) {
+        xSpeed = Math.min(xSpeed + 1, 1 * maxSpeed);
+        const xml = (new XMLSerializer).serializeToString(runnningStickFigureRightSvg);
+        stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
+    }
+    if (leftPressed) {
+        xSpeed = Math.max(xSpeed - 1, -1 * maxSpeed);
+        const xml = (new XMLSerializer).serializeToString(runningStickFigureLeftSvg);
+        stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
+    }
+    if (!leftPressed && !rightPressed) {
+        slowDownX();
+        const xml = (new XMLSerializer).serializeToString(stillStickFigureSvg);
+        stickFigure.src = 'data:image/svg+xml;base64,' + btoa(xml);
+    }
+    stickFigure = resizeStickFigure(stickFigure);
+    stickFigure.style.left = xPos + "px";
 };
 
 main();
