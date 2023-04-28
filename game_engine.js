@@ -29,19 +29,19 @@ const main = () => {
 }
 
 document.addEventListener('keydown', (event) => {
-    if (event.key == 'a') {
+    if (event.key == 'a' || event.key == 'ArrowLeft') {
         console.log('pressed a');
         leftPressed = true;
-    } else if (event.key == 'd') {
+    } else if (event.key == 'd' || event.key == 'ArrowRight') {
         console.log('pressed d');
         rightPressed = true;
     }
 });
 
 document.addEventListener('keyup', (event) => {
-    if (event.key == 'a') {
+    if (event.key == 'a' || event.key == 'ArrowLeft') {
         leftPressed = false;
-    } else if (event.key == 'd') {
+    } else if (event.key == 'd' || event.key == 'ArrowRight') {
         rightPressed = false;
     }
 });
