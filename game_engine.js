@@ -1,4 +1,4 @@
-let xPos = 100;
+let xPos = -100;
 let maxSpeed = 8;
 let xSpeed = 0;
 let rightPressed = false;
@@ -13,19 +13,21 @@ const main = () => {
     stickManImage.style.position = 'absolute';
     document.body.appendChild(assetsDiv);
     document.body.appendChild(stickManImage);
-    fetch('./stick_man.svg').then(r => r.text()).then(text => {
+    fetch('animated-svg-stickman/stick_man.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('./stick_man_running_right.svg').then(r => r.text()).then(text => {
+    fetch('animated-svg-stickman/stick_man_running_right.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('./stick_man_running_left.svg').then(r => r.text()).then(text => {
+    fetch('animated-svg-stickman/stick_man_running_left.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
     setInterval('render()', 10);
+    rightPressed = true;
+    setTimeout(() => { rightPressed = false; }, 600);
 }
 
 document.addEventListener('keydown', (event) => {
