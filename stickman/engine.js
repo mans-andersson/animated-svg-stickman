@@ -18,23 +18,23 @@ const main = () => {
     document.body.appendChild(assetsDiv);
     document.body.appendChild(stickManImage);
     stickManImage.style.bottom = "0px";
-    fetch('animated-svg-stickman/stick_man.svg').then(r => r.text()).then(text => {
+    fetch('stickman/stick_man.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('animated-svg-stickman/stick_man_running_right.svg').then(r => r.text()).then(text => {
+    fetch('stickman/stick_man_running_right.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('animated-svg-stickman/stick_man_running_left.svg').then(r => r.text()).then(text => {
+    fetch('stickman/stick_man_running_left.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('animated-svg-stickman/stick_man_crouching_left.svg').then(r => r.text()).then(text => {
+    fetch('stickman/stick_man_crouching_left.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
-    fetch('animated-svg-stickman/stick_man_crouching_right.svg').then(r => r.text()).then(text => {
+    fetch('stickman/stick_man_crouching_right.svg').then(r => r.text()).then(text => {
         const stickFigureSvg = new DOMParser().parseFromString(text, "image/svg+xml");
         document.getElementById('svgAssets').appendChild(stickFigureSvg.lastChild);
     });
@@ -71,7 +71,13 @@ document.addEventListener('keyup', (event) => {
 });
 
 const jump = () => {
-    ySpeed = 90;
+    ySpeed = 100;
+    const horizontalSpeedBoost = 20;
+    if (xSpeed > 0) {
+        xSpeed = xSpeed + horizontalSpeedBoost;
+    } else if (xSpeed < 0) {
+        xSpeed = xSpeed - horizontalSpeedBoost;
+    }
 }
 
 const gravity = () => {
