@@ -11,3 +11,5 @@ To add it to a your page, copy the `stickman` directory into your source directo
 Run left/right: `A` `D` or `←` `→`
 
 Jump: `SPACE`
+
+![Demo gif](demo.gif)
